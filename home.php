@@ -25,10 +25,18 @@
             </div>
 			<div>
 				<!--url-ben állapottartás: link a kijelentkezésre-->
+                <a href="home.php?q=logout">Kijelentkezés</a>
 			</div>
 			<?php
-				//ha admin a felh-ó, akkor megjelenítjük a bej-tt felh-kat
-			?>
+                // Feltételezzük, hogy van egy isAdmin() függvény, amely ellenőrzi az admin jogosultságot.
+                if ($felh->isAdmin()) {
+            ?>
+            <div>
+                <h1>Hello <?php echo $felh->get_nev($felhAzon); ?>!</h1>
+            </div>
+            <?php
+                }
+            ?>
         </main>
     </body>
 </html>

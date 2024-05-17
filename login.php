@@ -1,6 +1,8 @@
 <?php
     session_start();
     include_once 'Adatbazis.php';
+    
+
     $felh = new User();
     if (isset($_REQUEST['submit'])) {
         extract($_REQUEST);
@@ -13,6 +15,7 @@
             echo 'Hibás felhasználónév vagy jelszó';
         }
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="hu-HU">

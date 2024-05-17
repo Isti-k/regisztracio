@@ -5,6 +5,7 @@
 		private $jelszo="";
 		private $abNev="pizzahot";
 		private $kapcsolat;
+
     
 		//konstuktor
 		public function __construct() {	
@@ -33,10 +34,24 @@
 			//különben hamissal térjünk vissza!
     	}
 
+		public function get_session(){
+			$felh = new User();
+			$felhAzon = $_SESSION['felhAzon'];
+			if (!$felh->get_session()){
+				header("location:login.php");
+			}
+            return $_SESSION['login'];
+
+        }
+
     	
     	public function get_nev($felhAzon){
     		//felhAzon alapján név visszaadása
 			//$result->fetch_array(MYSQLI_ASSOC);
+			$select3="SELECT nev FROM felhasznalo WHERE felAzon = $felhAzon";
+			$result = $this->lekerdezes($select3);
+			$user_data = mysqli_fetch_array($result);
+			echo $user_data['nev'];
     	}
 		
 		public function adminE($felhAzon){
